@@ -1,0 +1,265 @@
+{
+  "events": [
+    {
+      "slug": "research-paper-presentation",
+      "name": "Research Paper Presentation",
+      "description": "Present innovative research in cutting-edge electrical engineering domains.",
+      "fullDescription": "Showcase your research and innovative ideas in advanced electrical engineering domains. Present papers on emerging technologies, novel solutions, and cutting-edge research with focus on sustainable development and future technologies.",
+      "focusAreas": [
+        "Quantum & Future Electrical Systems",
+        "Sustainable Green Energy Technologies",
+        "Electric Vehicles & Smart Traffic",
+        "Space Tech & Aerospace Energy",
+        "Cybersecurity for Power Systems",
+        "Biomedical Tech & Wearables",
+        "AI-Driven Power Electronics",
+        "Next-Gen IoT Energy Systems"
+      ],
+      "benefits": "Awards, certificates, and recognition for top presentations",
+      "rounds": [
+        {
+          "name": "Abstract Submission",
+          "description": "Submit your abstract for initial review."
+        },
+        {
+          "name": "Paper Presentation",
+          "description": "Present your paper to a panel of judges. Q&A session follows."
+        }
+      ],
+      "rules": [
+        "Papers must be original work",
+        "Presentation time: 10-15 minutes",
+        "Q&A: 5 minutes",
+        "Follow IEEE format guidelines",
+        "Plagiarism will result in disqualification"
+      ],
+      "date": "Feb 19, 2026",
+      "time": "TBA",
+      "contacts": [
+        {
+          "name": "Jeevan",
+          "phone": "6382695367"
+        },
+        {
+          "name": "Abu",
+          "phone": "9629265844"
+        },
+        {
+          "name": "Sai Sundar",
+          "phone": "7397412315"
+        }
+      ],
+      "poster": "/images/research-paper-presentation.jpg"
+    },
+    {
+      "slug": "sail-the-circuit",
+      "name": "Sail The Circuit",
+      "description": "Pirate-themed physical circuit adventure with team challenges.",
+      "fullDescription": "Embark on a pirate-themed adventure through physical circuit challenges. Navigate through multiple rounds of hands-on electrical engineering tasks with a fun pirate twist. Form a team of 3 pirates and conquer the challenges!",
+      "rounds": [
+        {
+          "name": "The Smuggler's Path",
+          "description": "Transfer pearls through tilted pipes/channels without dropping them."
+        },
+        {
+          "name": "Lullaby of the Deep",
+          "description": "Navigate wire loop while music plays (freeze when silent)."
+        },
+        {
+          "name": "The Stolen Beat",
+          "description": "Fix a circuit using only hand signals (no speaking allowed)."
+        }
+      ],
+      "rules": [
+        "Teams of 3 members required",
+        "Safety equipment must be worn",
+        "Time limits apply to each round",
+        "No verbal communication in final round",
+        "Top teams advance to next rounds"
+      ],
+      "date": "Feb 19, 2026",
+      "time": "TBA",
+      "contacts": [
+        {
+          "name": "Palanikumar",
+          "phone": "9344489662"
+        },
+        {
+          "name": "Hari Garan",
+          "phone": "8122209432"
+        },
+        {
+          "name": "Shreenidhi",
+          "phone": "9962010822"
+        }
+      ],
+      "poster": "/images/sail-the-circuit.jpg"
+    },
+    {
+      "slug": "electric-wordza",
+      "name": "Electric Wordza",
+      "description": "Team-based electrical word and clue solving challenge.",
+      "fullDescription": "Electric Wordza is a team-based electrical knowledge game that tests your understanding of electrical concepts through word puzzles and interactive challenges. Form a team of 3 and showcase your electrical vocabulary!",
+      "rounds": [
+        {
+          "name": "Electric Bingo",
+          "description": "Match electrical terms on a grid to complete bingo patterns."
+        },
+        {
+          "name": "Act & Guess",
+          "description": "Enact electrical terms, teammates guess with maximum 3 clues."
+        }
+      ],
+      "rules": [
+        "Teams must consist of 3 members",
+        "No external help or mobile devices allowed",
+        "Time limits apply to each round",
+        "Maximum 3 clues per term in Round 2",
+        "Judges' decisions are final"
+      ],
+      "date": "Feb 19, 2026",
+      "time": "12:00 - 1:30 PM",
+      "contacts": [
+        {
+          "name": "Renugadevi",
+          "phone": "9360984689"
+        },
+        {
+          "name": "Sai Harini",
+          "phone": "9042712617"
+        },
+        {
+          "name": "Madheswaran",
+          "phone": "9677519828"
+        }
+      ],
+      "poster": "/images/electric-wordza.jpg"
+    },
+    {
+      "slug": "greek-eee-heist",
+      "name": "The Greek EEE Heist",
+      "description": "Multi-round competition targeting first and second-year students.",
+      "fullDescription": "A thrilling multi-round competition specifically designed for first and second-year students. First-year students get hints to level the playing field. Test your electrical knowledge through UNO, component identification, and circuit solving!",
+      "rounds": [
+        {
+          "name": "UNO Game",
+          "description": "UNO game competition (top 5 from each group of 10 advance)."
+        },
+        {
+          "name": "Component Identification",
+          "description": "Identify electrical/electronic components from images (1 minute limit)."
+        },
+        {
+          "name": "Circuit Problem Solving",
+          "description": "Solve resistor-based circuit problems."
+        }
+      ],
+      "rules": [
+        "Target: First and second-year students",
+        "First-year students receive hints",
+        "Teams compete in multiple rounds",
+        "Time limits strictly enforced",
+        "Top performers advance to next rounds"
+      ],
+      "date": "Feb 19, 2026",
+      "time": "12:00 - 1:30 PM",
+      "venue": "CB523",
+      "contacts": [
+        {
+          "name": "Madhu",
+          "phone": "8838202157"
+        },
+        {
+          "name": "Aswan",
+          "phone": "9344781871"
+        },
+        {
+          "name": "Santosh",
+          "phone": "9080083869"
+        }
+      ],
+      "poster": "/images/greek-eee-heist.jpg"
+    },
+    {
+      "slug": "project-presentation",
+      "name": "Project Presentation - Engineering Impact",
+      "description": "Showcase projects addressing UN Sustainable Development Goals.",
+      "fullDescription": "Demonstrate your engineering prowess by presenting real-time working projects that address UN Sustainable Development Goals. Showcase innovative solutions, prototypes, and implementations with clear impact on global challenges.",
+      "rounds": [
+        {
+          "name": "Project Demo",
+          "description": "Demonstrate your working project to judges and visitors."
+        },
+        {
+          "name": "Presentation & Q&A",
+          "description": "Present your project concept, implementation, and SDG impact. Answer questions from judges."
+        }
+      ],
+      "rules": [
+        "Operational model required",
+        "Must address UN Sustainable Development Goals (SDG number clearly mentioned)",
+        "Bring own laptops/adapters",
+        "Evaluation based on innovation, technical depth, feasibility, sustainability, and impact",
+        "Safety guidelines must be followed"
+      ],
+      "date": "Feb 19, 2026",
+      "time": "12:00 - 1:30 PM",
+      "venue": "CB523",
+      "contacts": [
+        {
+          "name": "Prarthana G",
+          "phone": "9176796726"
+        },
+        {
+          "name": "Shruthi S",
+          "phone": "9025892425"
+        },
+        {
+          "name": "Gopika J",
+          "phone": "9445127306"
+        }
+      ],
+      "poster": "/images/project-presentation.jpg"
+    },
+    {
+      "slug": "battleship",
+      "name": "Battleship",
+      "description": "Logic-based electrical battleship challenge with puzzles.",
+      "fullDescription": "A strategic logic-based game combining the classic Battleship concept with electrical engineering challenges. Test your logical reasoning and electrical knowledge through puzzle-solving and board navigation.",
+      "rounds": [
+        {
+          "name": "Sink or Strike",
+          "description": "Solve electrical puzzles to locate and sink hidden ships."
+        },
+        {
+          "name": "Pirates of the Power Grid",
+          "description": "Navigate a board game with logic puzzles, traps, and power-ups (10 min max, dice-based movement)."
+        }
+      ],
+      "rules": [
+        "Teams of 2-3 members",
+        "No external assistance allowed",
+        "Time limits for each round",
+        "Strategic thinking is key",
+        "Judges' decisions are final"
+      ],
+      "date": "Feb 19, 2026",
+      "time": "TBA",
+      "contacts": [
+        {
+          "name": "Rakshana",
+          "phone": "8489177757"
+        },
+        {
+          "name": "Solaipriadharshan",
+          "phone": "9345514391"
+        },
+        {
+          "name": "Mukund",
+          "phone": "9884103995"
+        }
+      ],
+      "poster": "/images/battleship.jpg"
+    }
+  ]
+}
