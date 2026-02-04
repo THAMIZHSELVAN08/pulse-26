@@ -50,15 +50,34 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        navy: {
+          900: '#0a0a1a',
+          950: '#050510',
+        },
+        electric: {
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6',
+          600: '#0d9488',
+          700: '#0f766e',
+        },
         neon: {
-          blue: '#00f0ff',
-          cyan: '#00d9ff',
-          purple: '#a855f7',
+          blue: '#5eead4', // electric-300
+          cyan: '#2dd4bf', // electric-400
+          purple: '#14b8a6', // electric-500
         },
         dark: {
-          bg: '#0a0a0f',
-          card: '#11111f',
+          bg: '#050510',
+          card: '#0a0a1a',
         },
+      },
+      fontFamily: {
+        sans: ['var(--font-outfit)', 'sans-serif'],
+        orbitron: ['var(--font-orbitron)', 'sans-serif'],
+      },
+      boxShadow: {
+        'glow': '0 0 20px rgba(45, 212, 191, 0.5)',
+        'glow-lg': '0 0 40px rgba(45, 212, 191, 0.3)',
       },
       borderRadius: {
         lg: "var(--radius)",

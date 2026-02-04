@@ -13,10 +13,13 @@ export interface Event {
   name: string
   description: string
   fullDescription: string
+  focusAreas?: string[]
+  benefits?: string
   rounds?: EventRound[]
   rules?: string[]
   date: string
   time: string
+  venue?: string
   contacts?: EventContact[]
   poster: string
 }

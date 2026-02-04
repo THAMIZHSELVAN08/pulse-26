@@ -1,137 +1,204 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { scrollY } = useScroll()
+
+  const navOpacity = useTransform(scrollY, [0, 100], [0.9, 1])
+  const navBlur = useTransform(scrollY, [0, 100], ["blur(0px)", "blur(16px)"])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/#about' },
+    { name: 'About', href: '/#about' },
     { name: 'Events', href: '/events' },
-    { name: 'Register', href: '/register' },
-    { name: 'Contact', href: '/contact' },
   ]
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-neon-blue/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Left Sidebar - Desktop */}
-            <div className="hidden lg:flex items-center space-x-6">
-              <Link
-                href="/"
-                className="text-sm font-medium text-gray-300 hover:text-neon-blue transition-colors relative group"
-              >
-                Home
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-blue group-hover:w-full transition-all duration-300"></span>
-              </Link>
-              <Link
-                href="/#about"
-                className="text-sm font-medium text-gray-300 hover:text-neon-blue transition-colors relative group"
-              >
-                About Us
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-blue group-hover:w-full transition-all duration-300"></span>
-              </Link>
-            </div>
-
-            {/* Hamburger Menu - Mobile */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-neon-blue/10 transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? (
-                <X className="w-6 h-6 text-neon-blue" />
-              ) : (
-                <Menu className="w-6 h-6 text-neon-blue" />
-              )}
-            </button>
-
-            {/* Logo - Center */}
-            <Link href="/" className="flex-1 flex justify-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex items-center space-x-2"
-              >
-                <span className="text-2xl font-bold bg-gradient-to-r from-neon-blue to-neon-cyan bg-clip-text text-transparent">
-                  PULSE
-                </span>
-                <span className="text-2xl font-bold text-neon-blue">'26</span>
-              </motion.div>
+      <motion.nav
+        style={{
+          opacity: navOpacity,
+          backdropFilter: navBlur,
+          WebkitBackdropFilter: navBlur,
+        }}
+        className={`fixed top-4 left-4 right-4 z-50 rounded-2xl transition-all duration-300 ${scrolled
+          ? 'glass py-2'
+          : 'bg-transparent py-4'
+          }`}
+      >
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo - Left Corner */}
+            <Link href="/" className="flex items-center group">
+              <motion.img
+                src="/images/logo3.png"
+                alt="PULSE"
+                className="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_8px_rgba(45,212,191,0.5)]"
+                whileHover={{ rotate: [0, -5, 5, 0] }}
+                transition={{ duration: 0.5 }}
+              />
             </Link>
 
-            {/* Right Side Navigation */}
-            <div className="hidden lg:flex items-center space-x-6">
-              <Link
-                href="/events"
-                className="text-sm font-medium text-gray-300 hover:text-neon-blue transition-colors relative group"
+            {/* Desktop Navigation - Right Corner */}
+            <div className="hidden md:flex items-center gap-2">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <Link
+                    href={item.href}
+                    className="relative px-5 py-2 text-sm font-medium text-gray-300 hover:text-electric-300 transition-colors duration-300 group font-orbitron tracking-wider"
+                  >
+                    <span className="relative z-10">{item.name}</span>
+                    <motion.span
+                      className="absolute inset-0 bg-electric-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      layoutId="navbar-hover"
+                    />
+                    <span className="absolute bottom-1 left-5 right-5 h-0.5 bg-gradient-to-r from-electric-400 to-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  </Link>
+                </motion.div>
+              ))}
+
+              {/* CTA Button - Inline with nav items */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
               >
-                Events
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-blue group-hover:w-full transition-all duration-300"></span>
-              </Link>
-              <Link
-                href="/register"
-                className="text-sm font-medium text-gray-300 hover:text-neon-blue transition-colors relative group"
-              >
-                Register
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-blue group-hover:w-full transition-all duration-300"></span>
-              </Link>
-              <Link
-                href="/contact"
-                className="text-sm font-medium text-gray-300 hover:text-neon-blue transition-colors relative group"
-              >
-                Contact
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-blue group-hover:w-full transition-all duration-300"></span>
-              </Link>
+                <Button
+                  asChild
+                  className="ml-1 bg-gradient-to-r from-electric-600 to-cyan-600 hover:from-electric-500 hover:to-cyan-500 text-white px-6 py-2 rounded-lg shadow-lg shadow-electric-500/20 hover:shadow-electric-500/40 transition-all duration-300 border-0 font-medium tracking-wide font-orbitron"
+                >
+                  <Link href="/register">Register Now</Link>
+                </Button>
+              </motion.div>
             </div>
 
-            {/* Placeholder for mobile - keeps logo centered */}
-            <div className="lg:hidden w-10"></div>
+            {/* Mobile Menu Button */}
+            <motion.button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 rounded-lg text-gray-300 hover:text-electric-300 hover:bg-electric-500/10 transition-all duration-300"
+              aria-label="Toggle menu"
+              whileTap={{ scale: 0.95 }}
+            >
+              <AnimatePresence mode="wait">
+                {isOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="w-6 h-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu className="w-6 h-6" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
-      {/* Mobile Sidebar */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <>
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
             />
+
+            {/* Mobile Menu Panel */}
             <motion.div
-              initial={{ x: -300 }}
+              initial={{ x: '100%' }}
               animate={{ x: 0 }}
-              exit={{ x: -300 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed left-0 top-0 bottom-0 w-64 glass border-r border-neon-blue/30 z-50 lg:hidden"
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="fixed right-0 top-0 bottom-0 w-64 bg-navy-950/98 backdrop-blur-xl border-l border-electric-500/20 z-50 md:hidden shadow-2xl"
             >
-              <div className="flex flex-col p-6 space-y-4 mt-20">
-                {navItems.map((item, index) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+              <div className="flex flex-col h-full">
+                {/* Mobile Header */}
+                <div className="flex items-center justify-between p-4 border-b border-electric-500/20">
+                  <span className="text-lg font-medium tracking-wider bg-gradient-to-r from-electric-300 to-cyan-300 bg-clip-text text-transparent font-orbitron">
+                    Menu
+                  </span>
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="p-2 rounded-lg text-gray-300 hover:text-electric-300 hover:bg-electric-500/10 transition-all"
                   >
-                    <Link
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className="block py-3 px-4 rounded-lg text-gray-300 hover:text-neon-blue hover:bg-neon-blue/10 transition-all"
-                    >
-                      {item.name}
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {/* Mobile Navigation Items */}
+                <div className="flex-1 overflow-y-auto p-4">
+                  <div className="space-y-2">
+                    {navItems.map((item, index) => (
+                      <motion.div
+                        key={item.name}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1, duration: 0.3 }}
+                      >
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className="block py-3 px-4 rounded-lg text-gray-300 hover:text-electric-300 hover:bg-electric-500/10 transition-all duration-300 font-medium tracking-wide group font-orbitron"
+                        >
+                          <span className="flex items-center justify-between">
+                            {item.name}
+                            <span className="w-1.5 h-1.5 rounded-full bg-electric-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </span>
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Mobile CTA */}
+                <div className="p-4 border-t border-electric-500/20">
+                  <Button
+                    asChild
+                    className="w-full bg-gradient-to-r from-electric-600 to-cyan-600 hover:from-electric-500 hover:to-cyan-500 text-white rounded-lg shadow-lg shadow-electric-500/20 border-0 font-medium tracking-wide font-orbitron"
+                  >
+                    <Link href="/register" onClick={() => setIsOpen(false)}>
+                      Register Now
                     </Link>
-                  </motion.div>
-                ))}
+                  </Button>
+                </div>
               </div>
             </motion.div>
           </>

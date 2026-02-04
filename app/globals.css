@@ -4,80 +4,104 @@
 
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
+    --background: 240 10% 4%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 188 100% 50%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 188 100% 50%;
-    --radius: 0.5rem;
-  }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 240 10% 4%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+
+    --popover: 240 10% 4%;
     --popover-foreground: 210 40% 98%;
-    --primary: 188 100% 50%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
+
+    --primary: 171 70% 50%;
+    --primary-foreground: 240 10% 4%;
+
+    --secondary: 215 25% 27%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
+
+    --muted: 215 25% 27%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 171 70% 50%;
     --accent-foreground: 210 40% 98%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 188 100% 50%;
+
+    --border: 215 25% 27%;
+    --input: 215 25% 27%;
+    --ring: 171 70% 50%;
+
+    --radius: 0.75rem;
   }
 }
 
 @layer base {
   * {
-    @apply border-gray-800;
+    @apply border-white/5;
   }
+
   body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300f0ff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    @apply bg-navy-950 text-white min-h-screen selection:bg-electric-500 selection:text-navy-950 overflow-x-hidden;
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
+      linear-gradient(rgba(45, 212, 191, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 212, 191, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 50px 50px, 50px 50px;
+    background-attachment: fixed;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-dark-card/80 backdrop-blur-md border border-neon-blue/20;
+    @apply bg-navy-900/30 backdrop-blur-md border border-white/5 shadow-xl;
   }
-  
+
+  .glass-card {
+    @apply bg-navy-900/40 backdrop-blur-xl border border-white/5 shadow-2xl hover:border-electric-500/30 transition-all duration-300;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-electric-300 to-electric-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-electric-300 to-electric-500 bg-clip-text text-transparent;
+  }
+
   .neon-glow {
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3),
-                0 0 40px rgba(0, 240, 255, 0.1),
-                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    @apply transition-shadow duration-300;
+    box-shadow: 0 0 20px rgba(45, 212, 191, 0.2);
   }
-  
+
+  .neon-glow:hover {
+    box-shadow: 0 0 40px rgba(45, 212, 191, 0.2);
+  }
+
   .neon-border {
-    @apply border-2 border-neon-blue/50;
+    @apply border border-electric-500/50;
+    box-shadow: 0 0 10px rgba(45, 212, 191, 0.2);
   }
-  
+
+  .hover-glow {
+    @apply transition-shadow duration-300;
+  }
+
   .hover-glow:hover {
-    box-shadow: 0 0 30px rgba(0, 240, 255, 0.5),
-                0 0 60px rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 20px rgba(45, 212, 191, 0.4);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-950;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-electric-600 rounded-full hover:bg-electric-500 transition-colors;
   }
 }
 

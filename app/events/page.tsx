@@ -1,106 +1,73 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Link from 'next/link'
-import BackToHome from '@/components/BackToHome'
 import eventsData from '@/data/events.json'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { motion } from 'framer-motion'
 
 export default function EventsPage() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  }
-
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <BackToHome />
-        
+    <div className="min-h-screen py-24 px-4 sm:px-6 lg:px-8 bg-navy-950">
+      <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-neon-blue to-neon-cyan bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 font-orbitron">
+            <span className="bg-gradient-to-r from-electric-300 to-cyan-300 bg-clip-text text-transparent">
               Events
             </span>
           </h1>
-          <p className="text-xl text-gray-300">
-            Explore our exciting technical competitions
-          </p>
+          <p className="text-gray-300 text-lg">Explore our exciting technical competitions</p>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {eventsData.events.map((event, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {eventsData.events.map((event) => (
             <motion.div
               key={event.slug}
-              variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -5 }}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45 }}
             >
-              <Card className="glass neon-border hover-glow transition-all h-full flex flex-col">
-                <CardHeader className="pb-4">
-                  <div className="relative h-48 bg-gradient-to-br from-neon-blue/20 to-neon-cyan/20 rounded-lg overflow-hidden mb-4">
-                    <img
-                      src={event.poster}
-                      alt={`${event.name} Poster`}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                    <div className="hidden w-full h-full flex items-center justify-center bg-dark-card/50">
-                      <p className="text-gray-400 text-sm text-center px-4">
-                        Event Poster
-                        <br />
-                        <span className="text-xs">({event.name})</span>
-                      </p>
+              <Card className="glass-card overflow-hidden h-full">
+                <Link href={`/events/${event.slug}`} className="group block h-full">
+                  <div className="flex gap-6 p-6">
+                    <div className="h-32 w-32 shrink-0 rounded-lg overflow-hidden border border-electric-500/20 bg-navy-900/40 flex items-center justify-center">
+                      <img
+                        src={event.poster}
+                        alt={`${event.name} Poster`}
+                        className="w-full h-full object-contain"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.parentElement!.innerHTML = '<span class="text-xs text-gray-500 text-center px-1">Poster</span>';
+                        }}
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1 flex flex-col justify-between">
+                      <div>
+                        <CardHeader className="p-0 mb-3">
+                          <CardTitle className="text-xl md:text-2xl text-white truncate font-orbitron tracking-wide">
+                            {event.name}
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="p-0">
+                          <p className="text-gray-400 line-clamp-2 text-sm">{event.description}</p>
+                        </CardContent>
+                      </div>
+                      <div className="mt-4 text-electric-300 font-medium group-hover:text-electric-200 transition-colors flex items-center text-sm font-orbitron tracking-wider">
+                        View Details <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                      </div>
                     </div>
                   </div>
-                  <CardTitle className="text-2xl font-bold text-neon-blue">
-                    {event.name}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1 flex flex-col">
-                  <CardDescription className="text-gray-300 mb-4 line-clamp-2 flex-1">
-                    {event.description}
-                  </CardDescription>
-                  <Button asChild variant="outline" className="w-full border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-dark-bg">
-                    <Link href={`/events/${event.slug}`}>
-                      For Details
-                      <span className="ml-2">→</span>
-                    </Link>
-                  </Button>
-                </CardContent>
+                </Link>
               </Card>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   )

@@ -1,55 +1,45 @@
 {
   "events": [
     {
-      "slug": "research-paper-presentation",
-      "name": "Research Paper Presentation",
-      "description": "Present innovative research in cutting-edge electrical engineering domains.",
-      "fullDescription": "Showcase your research and innovative ideas in advanced electrical engineering domains. Present papers on emerging technologies, novel solutions, and cutting-edge research with focus on sustainable development and future technologies.",
-      "focusAreas": [
-        "Quantum & Future Electrical Systems",
-        "Sustainable Green Energy Technologies",
-        "Electric Vehicles & Smart Traffic",
-        "Space Tech & Aerospace Energy",
-        "Cybersecurity for Power Systems",
-        "Biomedical Tech & Wearables",
-        "AI-Driven Power Electronics",
-        "Next-Gen IoT Energy Systems"
-      ],
-      "benefits": "Awards, certificates, and recognition for top presentations",
+      "slug": "bid-to-build",
+      "name": "BID TO BUILD",
+      "description": "Win the parts. Wire the win.",
+      "fullDescription": "Teams will be given a 'Mystery Circuit' problem statement. In Round 1, identify required components and bid for them using a fixed virtual budget. In Round 2, simulate the circuit using only components purchased.",
       "rounds": [
         {
-          "name": "Abstract Submission",
-          "description": "Submit your abstract for initial review."
+          "name": "Round 1: The Component Auction",
+          "description": "Identify required components for a 'Mystery Circuit' and bid for them using a fixed virtual budget. Only teams that secure all necessary components within budget move to the next round. Wrong parts or bankrupt teams are eliminated."
         },
         {
-          "name": "Paper Presentation",
-          "description": "Present your paper to a panel of judges. Q&A session follows."
+          "name": "Round 2: Simulation Showdown",
+          "description": "Simulate the circuit using only the components purchased in Round 1. Software: Any standard tool allowed (Tinkercad, Proteus, LTspice, etc.). Goal: Demonstrate a fully functional output to the judges."
         }
       ],
       "rules": [
-        "Papers must be original work",
-        "Presentation time: 10-15 minutes",
-        "Q&A: 5 minutes",
-        "Follow IEEE format guidelines",
-        "Plagiarism will result in disqualification"
+        "Team Size: 3 Members per team",
+        "Teams must bring one laptop with simulation software installed or use online software",
+        "Judging Criteria: 40% Auction Strategy (Budget saved + Inventory accuracy)",
+        "Judging Criteria: 40% Circuit Functionality",
+        "Judging Criteria: 20% Time Management"
       ],
       "date": "Feb 19, 2026",
-      "time": "TBA",
+      "time": "12:30 - 1:30 PM",
+      "venue": "CB523",
       "contacts": [
         {
-          "name": "Jeevan",
-          "phone": "6382695367"
+          "name": "ASWAN",
+          "phone": "9344781871"
         },
         {
-          "name": "Abu",
-          "phone": "9629265844"
+          "name": "SANTOSH",
+          "phone": "9080083869"
         },
         {
-          "name": "Sai Sundar",
-          "phone": "7397412315"
+          "name": "MADHU",
+          "phone": "8838202157"
         }
       ],
-      "poster": "/images/research-paper-presentation.jpg"
+      "poster": "/images/bidtobuild.png"
     },
     {
       "slug": "sail-the-circuit",
@@ -93,7 +83,7 @@
           "phone": "9962010822"
         }
       ],
-      "poster": "/images/sail-the-circuit.jpg"
+      "poster": "/images/sailthecircuit.jpg"
     },
     {
       "slug": "electric-wordza",
@@ -133,11 +123,11 @@
           "phone": "9677519828"
         }
       ],
-      "poster": "/images/electric-wordza.jpg"
+      "poster": "/images/wordza.jpg"
     },
     {
       "slug": "greek-eee-heist",
-      "name": "The Greek EEE Heist",
+      "name": "U(know)",
       "description": "Multi-round competition targeting first and second-year students.",
       "fullDescription": "A thrilling multi-round competition specifically designed for first and second-year students. First-year students get hints to level the playing field. Test your electrical knowledge through UNO, component identification, and circuit solving!",
       "rounds": [
@@ -178,11 +168,11 @@
           "phone": "9080083869"
         }
       ],
-      "poster": "/images/greek-eee-heist.jpg"
+      "poster": "/images/uknow.jpg"
     },
     {
       "slug": "project-presentation",
-      "name": "Project Presentation - Engineering Impact",
+      "name": "Project Presentation",
       "description": "Showcase projects addressing UN Sustainable Development Goals.",
       "fullDescription": "Demonstrate your engineering prowess by presenting real-time working projects that address UN Sustainable Development Goals. Showcase innovative solutions, prototypes, and implementations with clear impact on global challenges.",
       "rounds": [
@@ -219,7 +209,7 @@
           "phone": "9445127306"
         }
       ],
-      "poster": "/images/project-presentation.jpg"
+      "poster": "/images/project.jpg"
     },
     {
       "slug": "battleship",
