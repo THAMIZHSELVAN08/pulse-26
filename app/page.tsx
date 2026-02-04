@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
-import { ArrowRight, Instagram, Sparkles, Calendar, Mail, ChevronDown } from 'lucide-react'
+import { ArrowRight, Instagram, Sparkles, Calendar, Mail, ChevronDown, Zap } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
@@ -221,13 +221,25 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* CTA Button */}
+            {/* CTA Buttons - Updated with increased gap and new color */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.8 }}
-              className="pt-8"
+              className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-6"
             >
+              <Button
+                asChild
+                className="relative group bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white px-10 py-7 text-base rounded-lg shadow-lg shadow-violet-500/30 hover:shadow-xl hover:shadow-violet-500/50 transition-all duration-300 border-0 font-orbitron tracking-wider"
+              >
+                <Link href="/events">
+                  <span className="relative z-10 flex items-center gap-3 font-medium">
+                    Explore Events
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                </Link>
+              </Button>
+              
               <Button
                 asChild
                 className="relative group bg-gradient-to-r from-electric-600 to-cyan-600 hover:from-electric-500 hover:to-cyan-500 text-white px-10 py-7 text-base rounded-lg shadow-lg shadow-electric-500/30 hover:shadow-xl hover:shadow-electric-500/50 transition-all duration-300 border-0 font-orbitron tracking-wider"
@@ -239,6 +251,7 @@ export default function Home() {
                   </span>
                 </Link>
               </Button>
+              
             </motion.div>
 
           
@@ -266,93 +279,174 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Schedule Timeline Section */}
+      {/* Enhanced Schedule Timeline Section */}
       <section className="relative py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto relative">
+        <div className="max-w-5xl mx-auto relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-2xl md:text-4xl mb-3 tracking-tight font-orbitron">
+            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-electric-500/10 border border-electric-500/20 mb-6">
+              <Zap className="w-4 h-4 text-electric-400" />
+              <span className="text-xs uppercase tracking-[0.3em] text-electric-300 font-orbitron">
+                February 19, 2026
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-5xl mb-4 tracking-tight font-orbitron">
               <span className="text-gradient">Event Timeline</span>
             </h2>
-            <p className="text-gray-400 text-sm md:text-base">
-              Track the flow of events for PULSE&apos;26 throughout the day.
+            <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
+              Experience a full day of innovation, competition, and technical excellence at PULSE&apos;26
             </p>
           </motion.div>
 
-          <div className="relative scale-95 md:scale-90 origin-top">
-            <div className="absolute left-3 md:left-1/2 top-0 bottom-0 border-l border-electric-500/30 pointer-events-none" />
+          {/* Timeline Container with improved mobile layout */}
+          <div className="relative">
+            {/* Center line - adjusted for better mobile view */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-electric-500/20 via-electric-500/50 to-electric-500/20 pointer-events-none" />
 
-            <div className="space-y-8">
+            <div className="space-y-12 md:space-y-16">
               {[
+                {
+                  title: "Project Presentation",
+                  time: "10:00 AM",
+                  side: "left" as const,
+                  accent: "from-violet-500/90 to-purple-600/90",
+                  description: "Showcase innovative projects and technical solutions",
+                  icon: "💡"
+                },
                 {
                   title: "Bid To Build",
                   time: "10:00 - 12:30 PM",
-                  side: "left" as const,
-                  accent: "from-emerald-500/80 to-teal-500/80"
+                  side: "right" as const,
+                  accent: "from-emerald-500/80 to-teal-500/80",
+                  description: "Strategic auction-based circuit building challenge",
+                  icon: "⚡"
                 },
                 {
                   title: "U(know)",
                   time: "10:30 - 12:30 PM",
-                  side: "right" as const,
-                  accent: "from-cyan-500/80 to-sky-500/80"
+                  side: "left" as const,
+                  accent: "from-cyan-500/80 to-sky-500/80",
+                  description: "Test your electrical engineering knowledge",
+                  icon: "🧠"
                 },
                 {
                   title: "Electric Wordza",
                   time: "12:30 - 2:00 PM",
-                  side: "left" as const,
-                  accent: "from-amber-400/90 to-orange-500/90"
+                  side: "right" as const,
+                  accent: "from-amber-400/90 to-orange-500/90",
+                  description: "Technical crossword puzzle competition",
+                  icon: "📝"
                 },
                 {
                   title: "Sail The Circuit",
                   time: "12:30 - 2:00 PM",
-                  side: "right" as const,
-                  accent: "from-teal-400/90 to-emerald-500/90"
+                  side: "left" as const,
+                  accent: "from-teal-400/90 to-emerald-500/90",
+                  description: "Navigate through complex circuit challenges",
+                  icon: "🔌"
                 },
                 {
                   title: "Battleship",
                   time: "12:45 - 2:30 PM",
-                  side: "left" as const,
-                  accent: "from-slate-400/90 to-slate-600/90"
+                  side: "right" as const,
+                  accent: "from-slate-400/90 to-blue-500/90",
+                  description: "Strategic naval warfare meets electronics",
+                  icon: "🚢"
                 }
               ].map((item, index) => {
                 const isLeft = item.side === "left"
                 return (
                   <motion.div
                     key={item.title}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6, delay: index * 0.05 }}
+                    initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ 
+                      duration: 0.6, 
+                      delay: index * 0.1,
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
                     className={`relative flex ${isLeft ? "md:justify-start" : "md:justify-end"}`}
                   >
-                    <div className={`flex-1 md:max-w-[46%] ${isLeft ? "md:pr-8" : "md:pl-8"}`}>
-                      <div className="relative">
-                        <div className="absolute -left-4 md:-left-5 top-5 w-2.5 h-2.5 rounded-full bg-electric-400 shadow-[0_0_12px_rgba(45,212,191,0.8)] md:left-auto md:right-[-1.25rem]" />
-                        <div className="glass-card neon-border rounded-2xl p-4 md:p-5 overflow-hidden">
-                          <div className={`absolute inset-y-0 ${isLeft ? "left-0" : "right-0"} w-1 bg-gradient-to-b ${item.accent} opacity-80`} />
-                          <div className="relative">
-                            <p className="text-[0.6rem] md:text-xs uppercase tracking-[0.25em] text-electric-300/80 mb-1 font-orbitron">
-                              PULSE&apos;26 EVENT
+                    {/* Timeline connector dot - improved positioning */}
+                    <div className={`absolute left-[1.875rem] md:left-1/2 top-6 md:top-8 w-3 h-3 md:w-4 md:h-4 rounded-full bg-electric-400 border-2 md:border-4 border-navy-950 shadow-[0_0_20px_rgba(45,212,191,0.8)] z-10 ${isLeft ? "md:-translate-x-2" : "md:-translate-x-2"}`} />
+
+                    {/* Card container */}
+                    <div className={`flex-1 md:max-w-[45%] pl-16 md:pl-0 ${isLeft ? "md:pr-12" : "md:pl-12"}`}>
+                      <motion.div
+                        whileHover={{ scale: 1.02, y: -4 }}
+                        transition={{ duration: 0.2 }}
+                        className="relative group"
+                      >
+                        {/* Glow effect */}
+                        <div className="absolute -inset-1 bg-gradient-to-r from-electric-500/20 to-cyan-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        
+                        {/* Card */}
+                        <div className="relative glass-card rounded-2xl overflow-hidden border border-white/10 group-hover:border-electric-500/40 transition-all duration-300">
+                          {/* Colored accent bar */}
+                          <div className={`absolute inset-y-0 ${isLeft ? "left-0" : "right-0"} w-1.5 bg-gradient-to-b ${item.accent}`} />
+                          
+                          {/* Content */}
+                          <div className="p-6 md:p-7">
+                            {/* Header */}
+                            <div className="flex items-start justify-between mb-3">
+                              <div className="flex-1">
+                                <p className="text-[0.65rem] md:text-xs uppercase tracking-[0.3em] text-electric-300/80 mb-2 font-orbitron font-medium">
+                                  PULSE&apos;26 EVENT
+                                </p>
+                                <h3 className="text-xl md:text-2xl font-orbitron text-white tracking-wide mb-2 flex items-center gap-2">
+                                  <span className="text-2xl">{item.icon}</span>
+                                  {item.title}
+                                </h3>
+                              </div>
+                            </div>
+
+                            {/* Time badge */}
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-electric-500/10 border border-electric-500/20 mb-3">
+                              <Calendar className="w-3.5 h-3.5 text-electric-400" />
+                              <span className="text-xs md:text-sm text-electric-200 font-orbitron tracking-wider">
+                                {item.time}
+                              </span>
+                            </div>
+
+                            {/* Description */}
+                            <p className="text-sm text-gray-400 leading-relaxed font-sans">
+                              {item.description}
                             </p>
-                            <h3 className="text-lg md:text-xl font-orbitron mb-1.5 text-white tracking-wide">
-                              {item.title}
-                            </h3>
-                            <p className="text-xs md:text-sm text-gray-300 font-sans">
-                              {item.time}
-                            </p>
+
+                            {/* Decorative corner */}
+                            <div className={`absolute ${isLeft ? "bottom-0 right-0" : "bottom-0 left-0"} w-16 h-16 opacity-5`}>
+                              <div className={`w-full h-full bg-gradient-to-${isLeft ? "tl" : "tr"} from-electric-400 to-transparent`} />
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     </div>
                   </motion.div>
                 )
               })}
             </div>
+
+            {/* End marker */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="flex justify-center mt-12"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-electric-500/20 rounded-full blur-xl animate-pulse" />
+                <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-electric-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-electric-500/50">
+                  <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -439,102 +533,179 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative py-16 px-4 sm:px-6 lg:px-8 border-t border-electric-500/10 bg-navy-950/80 backdrop-blur-xl mt-20">
+      {/* Enhanced Footer */}
+      <footer className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-electric-500/20 bg-gradient-to-b from-navy-950/95 to-navy-900/95 backdrop-blur-xl mt-20">
+        {/* Decorative top border glow */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric-500/50 to-transparent" />
+        
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+            {/* AEEE Column */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="space-y-4"
+              className="space-y-5"
             >
-              <h3 className="text-lg font-medium tracking-wide font-orbitron">
-                <span className="bg-gradient-to-r from-electric-300 to-cyan-300 bg-clip-text text-transparent">
-                  AEEE
-                </span>
-              </h3>
-              <div className="space-y-2 text-gray-400 text-sm font-sans">
-                <p className="tracking-wide">Association of Electrical and Electronics Engineering</p>
-                <p className="tracking-wide">SVCE - EEE</p>
+              <div className="space-y-3">
+                <h3 className="text-xl font-bold tracking-wide font-orbitron">
+                  <span className="bg-gradient-to-r from-electric-300 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
+                    AEEE
+                  </span>
+                </h3>
+                <div className="w-12 h-1 bg-gradient-to-r from-electric-500 to-cyan-500 rounded-full" />
+              </div>
+              <div className="space-y-3 text-gray-400 text-sm font-sans">
+                <p className="tracking-wide leading-relaxed">Association of Electrical and Electronics Engineering</p>
+                <p className="tracking-wide text-gray-500">SVCE - EEE</p>
                 <a
                   href="https://instagram.com/aeee.svce"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-gray-400 hover:text-electric-400 transition-colors group mt-2"
+                  className="inline-flex items-center gap-2 text-gray-400 hover:text-electric-400 transition-all duration-300 group mt-3"
                 >
-                  <Instagram className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  <Instagram className="w-4 h-4 group-hover:scale-110 group-hover:rotate-12 transition-transform" />
                   <span className="tracking-wide">@aeee.svce</span>
                 </a>
               </div>
             </motion.div>
 
+            {/* Address Column */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="space-y-4"
+              className="space-y-5"
             >
-              <h3 className="text-lg font-medium tracking-wide font-orbitron">
-                <span className="bg-gradient-to-r from-electric-300 to-cyan-300 bg-clip-text text-transparent">
-                  Quick Links
-                </span>
-              </h3>
-              <div className="space-y-2 font-sans">
-                {[
-                  { href: "/events", label: "Events" },
-                  { href: "/register", label: "Register" },
-                  { href: "/contact", label: "Contact" }
-                ].map((link, i) => (
-                  <a
-                    key={i}
-                    href={link.href}
-                    className="block text-gray-400 hover:text-electric-400 transition-colors text-sm group tracking-wide"
-                  >
-                    <span className="group-hover:translate-x-1 inline-block transition-transform">
-                      {link.label}
-                    </span>
-                  </a>
-                ))}
+              <div className="space-y-3">
+                <h3 className="text-xl font-bold tracking-wide font-orbitron">
+                  <span className="bg-gradient-to-r from-electric-300 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
+                    Address
+                  </span>
+                </h3>
+                <div className="w-12 h-1 bg-gradient-to-r from-electric-500 to-cyan-500 rounded-full" />
+              </div>
+              <div className="space-y-3 text-sm text-gray-400 font-sans leading-relaxed">
+                <p className="font-semibold text-gray-300">Sri Venkateswara College of Engineering</p>
+                <div className="space-y-1.5">
+                  <p>Post Bag No.1</p>
+                  <p>Pennalur Village</p>
+                  <p>Chennai - Bengaluru Highways</p>
+                  <p>Sriperumbudur (off Chennai) Tk. - 602 117</p>
+                  <p>Tamil Nadu, India</p>
+                </div>
               </div>
             </motion.div>
 
+            {/* Contact Column */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-4"
+              className="space-y-5"
             >
-              <h3 className="text-lg font-medium tracking-wide font-orbitron">
-                <span className="bg-gradient-to-r from-electric-300 to-cyan-300 bg-clip-text text-transparent">
-                  Contact Us
-                </span>
-              </h3>
-              <div className="space-y-3 text-sm text-gray-400 font-sans">
-                <div className="flex items-center gap-3 group">
-                  <Mail className="w-4 h-4 group-hover:text-electric-400 transition-colors" />
+              <div className="space-y-3">
+                <h3 className="text-xl font-bold tracking-wide font-orbitron">
+                  <span className="bg-gradient-to-r from-electric-300 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
+                    Contact Us
+                  </span>
+                </h3>
+                <div className="w-12 h-1 bg-gradient-to-r from-electric-500 to-cyan-500 rounded-full" />
+              </div>
+              <div className="space-y-4 text-sm text-gray-400 font-sans">
+                <a 
+                  href="mailto:aeee@svce.ac.in"
+                  className="flex items-start gap-3 group hover:text-electric-400 transition-colors"
+                >
+                  <Mail className="w-4 h-4 mt-0.5 group-hover:text-electric-400 transition-colors flex-shrink-0" />
                   <span className="tracking-wide">aeee@svce.ac.in</span>
-                </div>
-                <div className="flex items-center gap-3 group">
-                  <Instagram className="w-4 h-4 group-hover:text-electric-400 transition-colors" />
+                </a>
+                <a
+                  href="https://instagram.com/aeee.svce"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 group hover:text-electric-400 transition-colors"
+                >
+                  <Instagram className="w-4 h-4 group-hover:text-electric-400 transition-colors flex-shrink-0" />
                   <span className="tracking-wide">@aeee.svce</span>
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Registration Support Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="space-y-5"
+            >
+              <div className="space-y-3">
+                <h3 className="text-xl font-bold tracking-wide font-orbitron">
+                  <span className="bg-gradient-to-r from-electric-300 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
+                    Registration Support
+                  </span>
+                </h3>
+                <div className="w-12 h-1 bg-gradient-to-r from-electric-500 to-cyan-500 rounded-full" />
+              </div>
+              <div className="space-y-4 text-sm font-sans">
+                <div className="group">
+                  <p className="text-gray-500 text-xs uppercase tracking-wider mb-1.5">Coordinator</p>
+                  <a 
+                    href="tel:+919342597576"
+                    className="flex items-center gap-2 text-gray-400 hover:text-electric-400 transition-colors"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-electric-400 group-hover:scale-125 transition-transform" />
+                    <div>
+                      <p className="font-medium text-white">Thamizh</p>
+                      <p className="text-gray-400 tracking-wider">+91 93425 97576</p>
+                    </div>
+                  </a>
+                </div>
+                <div className="group">
+                  <p className="text-gray-500 text-xs uppercase tracking-wider mb-1.5">Coordinator</p>
+                  <a 
+                    href="tel:+919500774210"
+                    className="flex items-center gap-2 text-gray-400 hover:text-electric-400 transition-colors"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 group-hover:scale-125 transition-transform" />
+                    <div>
+                      <p className="font-medium text-white">Nimal</p>
+                      <p className="text-gray-400 tracking-wider">+91 95007 74210</p>
+                    </div>
+                  </a>
                 </div>
               </div>
             </motion.div>
           </div>
 
+          {/* Bottom Section */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-12 pt-8 border-t border-electric-500/10 text-center text-sm text-gray-500 font-sans"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-16 pt-8 border-t border-electric-500/10"
           >
-            <p className="tracking-wider">© 2026 PULSE. All rights reserved.</p>
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-sm text-gray-500 font-sans tracking-wider">
+                © 2026 PULSE. All rights reserved.
+              </p>
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-electric-400/50" />
+                <p className="text-xs text-gray-600 font-sans tracking-wide">
+                  Powered by Innovation & Excellence
+                </p>
+              </div>
+            </div>
           </motion.div>
+
+          {/* Decorative Elements */}
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-electric-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-cyan-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
         </div>
       </footer>
     </div>
