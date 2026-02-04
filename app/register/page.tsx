@@ -58,7 +58,7 @@ export default function RegisterPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Card className="glass-card">
+              <Card className="glass-card neon-border hover-glow">
                 <CardHeader>
                   <CardTitle className="text-2xl font-light tracking-wide font-orbitron">
                     <span className="text-electric-400">
@@ -91,7 +91,7 @@ export default function RegisterPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Card className="glass-card">
+              <Card className="glass-card neon-border hover-glow">
                 <CardHeader>
                   <CardTitle className="text-2xl font-light tracking-wide text-center font-orbitron">
                     <span className="text-electric-400">
@@ -148,7 +148,7 @@ export default function RegisterPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <Card className="bg-electric-500/5 backdrop-blur-xl border-electric-500/20">
+              <Card className="bg-electric-500/5 backdrop-blur-xl border-electric-500/20 neon-border hover-glow">
                 <CardContent className="p-6">
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
@@ -157,7 +157,7 @@ export default function RegisterPage() {
                     <div>
                       <h3 className="text-white font-medium mb-2 tracking-wide font-orbitron">Important Information</h3>
                       <ul className="space-y-2 text-gray-400 text-sm tracking-wide">
-                        <li>• Registration closes on February 15, 2026</li>
+                        <li>• Registration closes on February 17, 2026</li>
                         <li>• Participants will receive confirmation via email</li>
                         <li>• Bring your student ID on the event day</li>
                         <li>• For queries, contact us at aeee@svce.ac.in</li>

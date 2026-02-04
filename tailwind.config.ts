@@ -72,8 +72,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-outfit)', 'sans-serif'],
-        orbitron: ['var(--font-orbitron)', 'sans-serif'],
+        // Inter (configured as --font-outfit in layout.tsx) is the primary, professional body font
+        sans: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
+        // Use the same professional base font for orbitron utility class, keeping styles consistent across the site
+        orbitron: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'glow': '0 0 20px rgba(45, 212, 191, 0.5)',

@@ -58,7 +58,7 @@ export default function ContactPage() {
   ]
 
   return (
-    <div className="min-h-screen py-24 px-4 sm:px-6 lg:px-8 bg-navy-950">
+    <div className="min-h-screen page-bg-contact py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <BackToHome />
 
@@ -88,7 +88,7 @@ export default function ContactPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="glass-card rounded-xl p-6"
+                className="glass-card neon-border hover-glow rounded-xl p-6"
               >
                 <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${card.color} flex items-center justify-center mb-4`}>
                   <Icon className="w-6 h-6 text-navy-950" />
@@ -118,7 +118,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="glass-card rounded-xl p-8"
+          className="glass-card neon-border hover-glow rounded-xl p-8"
         >
           <h2 className="text-3xl font-bold text-electric-400 mb-12 text-center font-orbitron tracking-wide">
             Event Coordinators

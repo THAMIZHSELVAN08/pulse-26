@@ -139,10 +139,9 @@ export default function Home() {
   const { scrollY } = useScroll()
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 }
 
-  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0])
-  const heroScale = useTransform(scrollY, [0, 400], [1, 0.95])
-  const smoothOpacity = useSpring(heroOpacity, springConfig)
-  const smoothScale = useSpring(heroScale, springConfig)
+  // Keep the hero text readable while giving the logo a subtle parallax feel
+  const logoTranslateY = useSpring(useTransform(scrollY, [0, 400], [0, 40]), springConfig)
+  const logoScale = useSpring(useTransform(scrollY, [0, 400], [1, 0.9]), springConfig)
 
   return (
     <div className="min-h-screen bg-navy-950 text-white overflow-hidden font-sans">
@@ -154,10 +153,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center">
-        <motion.div
-          style={{ opacity: smoothOpacity, scale: smoothScale }}
-          className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20"
-        >
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -169,24 +165,27 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="space-y-3"
+              className="space-y-4"
             >
-              <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-electric-400/90 font-medium font-orbitron">
+              <p className="text-sm md:text-lg uppercase tracking-[0.35em] text-electric-300 font-semibold font-orbitron">
                 Sri Venkateswara College of Engineering
               </p>
               <div className="flex items-center justify-center gap-3">
-                <div className="h-px w-16 bg-gradient-to-r from-transparent via-electric-500/50 to-transparent" />
-                <Sparkles className="w-4 h-4 text-electric-400/70" />
-                <div className="h-px w-16 bg-gradient-to-l from-transparent via-electric-500/50 to-transparent" />
+                <div className="h-px w-16 bg-gradient-to-r from-transparent via-electric-500/60 to-transparent" />
+                <Sparkles className="w-5 h-5 text-electric-400/80" />
+                <div className="h-px w-16 bg-gradient-to-l from-transparent via-electric-500/60 to-transparent" />
               </div>
-              <p className="text-xs md:text-sm text-gray-400 tracking-wide font-sans">
+              <p className="text-xs md:text-base text-gray-300 tracking-[0.25em] font-orbitron">
                 Department of Electrical and Electronics Engineering
               </p>
-              <p className="text-xs text-gray-500 tracking-wider">In Association with AEEE</p>
+              <p className="text-[0.7rem] md:text-sm text-electric-200 tracking-[0.35em] font-orbitron">
+                In Association With AEEE
+              </p>
             </motion.div>
 
             {/* Logo */}
             <motion.div
+              style={{ y: logoTranslateY, scale: logoScale }}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
@@ -242,24 +241,9 @@ export default function Home() {
               </Button>
             </motion.div>
 
-            {/* Scroll Indicator */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 1 }}
-              className="pt-16"
-            >
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                className="inline-flex flex-col items-center gap-2 text-gray-500"
-              >
-                <span className="text-xs uppercase tracking-widest">Scroll</span>
-                <ChevronDown className="w-5 h-5" />
-              </motion.div>
-            </motion.div>
+          
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Countdown */}
@@ -282,90 +266,176 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Poster Section */}
+      {/* Schedule Timeline Section */}
       <section className="relative py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="relative group"
-          >
-            <div className="absolute -inset-6 bg-gradient-to-r from-electric-500/20 via-cyan-500/20 to-teal-500/20 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative overflow-hidden rounded-xl border border-electric-500/20 shadow-2xl backdrop-blur-sm bg-navy-900/30">
-              <motion.img
-                src="/images/poster.jpg"
-                alt="PULSE Poster"
-                className="w-full h-full object-contain"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.5 }}
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="relative py-32 px-4 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-navy-900/50 to-transparent pointer-events-none" />
-        <div className="max-w-6xl mx-auto relative">
+        <div className="max-w-4xl mx-auto relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl mb-6 tracking-tight font-orbitron">
-              About <span className="text-gradient font-bold">The Event</span>
+            <h2 className="text-2xl md:text-4xl mb-3 tracking-tight font-orbitron">
+              <span className="text-gradient">Event Timeline</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-electric-500 to-cyan-500 mx-auto rounded-full" />
+            <p className="text-gray-400 text-sm md:text-base">
+              Track the flow of events for PULSE&apos;26 throughout the day.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            {[
-              {
-                title: "SVCE - EEE Department",
-                content: [
-                  "The Department of Electrical and Electronics Engineering at Sri Venkateswara College of Engineering is committed to fostering excellence through strong fundamentals and industry-relevant learning experiences.",
-                  "Through the Association of Electrical and Electronics Engineering (AEEE), we cultivate a vibrant technical culture that emphasizes teamwork, innovation, and real-world problem solving."
-                ]
-              },
-              {
-                title: "PULSE'26 Symposium",
-                content: [
-                  "PULSE'26 is a prestigious National Level Technical Symposium designed to bring together young innovators, researchers, and industry professionals for an enriching day of technical competitions, presentations, and hands-on challenges.",
-                  "Join us on February 19, 2026 for an exceptional opportunity to learn, network, and showcase your innovative ideas on a national platform."
-                ]
-              }
-            ].map((section, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: idx * 0.2 }}
-                className="group"
-              >
-                <div className="relative h-full">
-                  <div className="absolute inset-0 bg-gradient-to-br from-electric-500/10 to-cyan-500/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative h-full glass-card rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-300">
-                    <h3 className="text-2xl md:text-3xl font-light mb-6 font-orbitron">
-                      <span className="text-gradient-primary">
-                        {section.title}
-                      </span>
-                    </h3>
-                    <div className="space-y-4 text-gray-300 leading-relaxed text-base md:text-lg font-light font-sans">
-                      {section.content.map((text, i) => (
-                        <p key={i}>{text}</p>
-                      ))}
+          <div className="relative scale-95 md:scale-90 origin-top">
+            <div className="absolute left-3 md:left-1/2 top-0 bottom-0 border-l border-electric-500/30 pointer-events-none" />
+
+            <div className="space-y-8">
+              {[
+                {
+                  title: "Bid To Build",
+                  time: "10:00 - 12:30 PM",
+                  side: "left" as const,
+                  accent: "from-emerald-500/80 to-teal-500/80"
+                },
+                {
+                  title: "U(know)",
+                  time: "10:30 - 12:30 PM",
+                  side: "right" as const,
+                  accent: "from-cyan-500/80 to-sky-500/80"
+                },
+                {
+                  title: "Electric Wordza",
+                  time: "12:30 - 2:00 PM",
+                  side: "left" as const,
+                  accent: "from-amber-400/90 to-orange-500/90"
+                },
+                {
+                  title: "Sail The Circuit",
+                  time: "12:30 - 2:00 PM",
+                  side: "right" as const,
+                  accent: "from-teal-400/90 to-emerald-500/90"
+                },
+                {
+                  title: "Battleship",
+                  time: "12:45 - 2:30 PM",
+                  side: "left" as const,
+                  accent: "from-slate-400/90 to-slate-600/90"
+                }
+              ].map((item, index) => {
+                const isLeft = item.side === "left"
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6, delay: index * 0.05 }}
+                    className={`relative flex ${isLeft ? "md:justify-start" : "md:justify-end"}`}
+                  >
+                    <div className={`flex-1 md:max-w-[46%] ${isLeft ? "md:pr-8" : "md:pl-8"}`}>
+                      <div className="relative">
+                        <div className="absolute -left-4 md:-left-5 top-5 w-2.5 h-2.5 rounded-full bg-electric-400 shadow-[0_0_12px_rgba(45,212,191,0.8)] md:left-auto md:right-[-1.25rem]" />
+                        <div className="glass-card neon-border rounded-2xl p-4 md:p-5 overflow-hidden">
+                          <div className={`absolute inset-y-0 ${isLeft ? "left-0" : "right-0"} w-1 bg-gradient-to-b ${item.accent} opacity-80`} />
+                          <div className="relative">
+                            <p className="text-[0.6rem] md:text-xs uppercase tracking-[0.25em] text-electric-300/80 mb-1 font-orbitron">
+                              PULSE&apos;26 EVENT
+                            </p>
+                            <h3 className="text-lg md:text-xl font-orbitron mb-1.5 text-white tracking-wide">
+                              {item.title}
+                            </h3>
+                            <p className="text-xs md:text-sm text-gray-300 font-sans">
+                              {item.time}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                  </motion.div>
+                )
+              })}
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* About Sections */}
+      <section id="about" className="relative py-32 px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-navy-900/50 to-transparent pointer-events-none" />
+        <div className="max-w-6xl mx-auto relative space-y-24">
+          {/* About SVCE / Department */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="relative overflow-hidden rounded-3xl glass-card neon-border p-8 md:p-10"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-electric-500/8 via-transparent to-cyan-500/10 pointer-events-none" />
+            <div className="relative space-y-6 text-center md:text-left md:max-w-3xl">
+              <div className="flex items-center gap-3 justify-center md:justify-start">
+                <div className="w-1 h-10 rounded-full bg-gradient-to-b from-electric-400 to-cyan-400 shadow-[0_0_18px_rgba(45,212,191,0.7)]" />
+                <p className="text-sm md:text-base uppercase tracking-[0.45em] text-electric-50 font-semibold">
+                  About SVCE - EEE
+                </p>
+              </div>
+              <h2 className="text-3xl md:text-5xl tracking-tight font-orbitron">
+                <span className="text-gradient">Shaping Future-ready Engineers</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-electric-500 to-cyan-500 rounded-full mx-auto md:mx-0" />
+              <div className="space-y-4 text-gray-300 text-sm md:text-base leading-relaxed font-sans">
+                <p>
+                  The Department of Electrical and Electronics Engineering at Sri Venkateswara College of Engineering
+                  is dedicated to experiential learning, strong fundamentals, and industry collaboration.
+                </p>
+                <p>
+                  Through AEEE, the student association, we enable learners to work on real-time projects,
+                  hands-on workshops, and technical forums that bridge classroom concepts with practical engineering.
+                </p>
+              </div>
+              <div className="mt-4 border-l-2 border-electric-500/70 pl-4 text-sm md:text-base text-gray-300 italic mx-auto md:mx-0">
+                &quot;Our goal is to ignite curiosity and empower students to engineer solutions for tomorrow.&quot;
+                <div className="mt-2 text-electric-300 not-italic font-medium">
+                  – SVCE EEE Faculty
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* About PULSE */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="glass-card neon-border rounded-3xl p-8 md:p-10 relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-electric-500/5 via-transparent to-cyan-500/5 pointer-events-none" />
+            <div className="relative space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="w-1 h-10 rounded-full bg-gradient-to-b from-electric-400 to-cyan-400 shadow-[0_0_18px_rgba(45,212,191,0.7)]" />
+                <p className="text-sm md:text-base uppercase tracking-[0.45em] text-electric-50 font-semibold">
+                  About PULSE&apos;26
+                </p>
+              </div>
+              <h2 className="text-3xl md:text-4xl tracking-tight font-orbitron">
+                <span className="text-gradient-primary">A National Level Technical Symposium</span>
+              </h2>
+              <div className="w-20 h-1 bg-gradient-to-r from-electric-500 to-cyan-500 rounded-full" />
+              <div className="space-y-4 text-gray-300 text-sm md:text-base leading-relaxed font-sans max-w-3xl">
+                <p>
+                  PULSE&apos;26 is a flagship national symposium by the Department of Electrical and Electronics
+                  Engineering, bringing together innovators, problem-solvers, and enthusiasts under one electrifying roof.
+                </p>
+                <p>
+                  Featuring circuit design challenges, auctions, team puzzles, technical quizzes, and project showcases,
+                  PULSE creates a platform where creativity meets engineering precision.
+                </p>
+                <p>
+                  Be part of a milestone event on February 19, 2026 and experience the surge of technology,
+                  collaboration, and innovation.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

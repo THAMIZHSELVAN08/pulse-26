@@ -16,30 +16,30 @@
         }
       ],
       "rules": [
-        "Team Size: 3 Members per team",
+        "Teams of 2-3 members per team",
         "Teams must bring one laptop with simulation software installed or use online software",
         "Judging Criteria: 40% Auction Strategy (Budget saved + Inventory accuracy)",
         "Judging Criteria: 40% Circuit Functionality",
         "Judging Criteria: 20% Time Management"
       ],
       "date": "Feb 19, 2026",
-      "time": "12:30 - 1:30 PM",
-      "venue": "CB523",
+      "time": "10:00 - 12:30 PM",
+      "venue": "Block 4",
       "contacts": [
         {
-          "name": "ASWAN",
-          "phone": "9344781871"
+          "name": "Thamizh",
+          "phone": "9342597576"
         },
         {
-          "name": "SANTOSH",
-          "phone": "9080083869"
+          "name": "Jeevan",
+          "phone": "6382695367"
         },
         {
-          "name": "MADHU",
-          "phone": "8838202157"
+          "name": "Nazira",
+          "phone": "9344266079"
         }
       ],
-      "poster": "/images/bidtobuild.png"
+      "poster": "/images/bidtobuild.jpg"
     },
     {
       "slug": "sail-the-circuit",
@@ -60,15 +60,15 @@
           "description": "Fix a circuit using only hand signals (no speaking allowed)."
         }
       ],
-      "rules": [
-        "Teams of 3 members required",
-        "Safety equipment must be worn",
-        "Time limits apply to each round",
-        "No verbal communication in final round",
-        "Top teams advance to next rounds"
-      ],
-      "date": "Feb 19, 2026",
-      "time": "TBA",
+       "rules": [
+         "Teams of 3 members per team",
+         "Safety equipment must be worn",
+         "Time limits apply to each round",
+         "No verbal communication in final round",
+         "Top teams advance to next rounds"
+       ],
+       "date": "Feb 19, 2026",
+       "time": "12:30 - 2:00 PM",
       "contacts": [
         {
           "name": "Palanikumar",
@@ -83,7 +83,8 @@
           "phone": "9962010822"
         }
       ],
-      "poster": "/images/sailthecircuit.jpg"
+       "poster": "/images/sailthecircuit.jpg",
+       "venue": "Block 4"
     },
     {
       "slug": "electric-wordza",
@@ -100,15 +101,15 @@
           "description": "Enact electrical terms, teammates guess with maximum 3 clues."
         }
       ],
-      "rules": [
-        "Teams must consist of 3 members",
-        "No external help or mobile devices allowed",
-        "Time limits apply to each round",
-        "Maximum 3 clues per term in Round 2",
-        "Judges' decisions are final"
-      ],
-      "date": "Feb 19, 2026",
-      "time": "12:00 - 1:30 PM",
+       "rules": [
+         "Teams of 2-3 members per team",
+         "No external help or mobile devices allowed",
+         "Time limits apply to each round",
+         "Maximum 3 clues per term in Round 2",
+         "Judges' decisions are final"
+       ],
+       "date": "Feb 19, 2026",
+       "time": "12:30 - 2:00 PM",
       "contacts": [
         {
           "name": "Renugadevi",
@@ -123,7 +124,8 @@
           "phone": "9677519828"
         }
       ],
-      "poster": "/images/wordza.jpg"
+       "poster": "/images/wordza.jpg",
+       "venue": "Block 4"
     },
     {
       "slug": "greek-eee-heist",
@@ -144,16 +146,17 @@
           "description": "Solve resistor-based circuit problems."
         }
       ],
-      "rules": [
-        "Target: First and second-year students",
-        "First-year students receive hints",
-        "Teams compete in multiple rounds",
-        "Time limits strictly enforced",
-        "Top performers advance to next rounds"
-      ],
-      "date": "Feb 19, 2026",
-      "time": "12:00 - 1:30 PM",
-      "venue": "CB523",
+       "rules": [
+         "Teams of 1 participant (solo event)",
+         "Target: First and second-year students",
+         "First-year students receive hints",
+         "Teams compete in multiple rounds",
+         "Time limits strictly enforced",
+         "Top performers advance to next rounds"
+       ],
+       "date": "Feb 19, 2026",
+       "time": "10:30 - 12:30 PM",
+       "venue": "Block 4",
       "contacts": [
         {
           "name": "Madhu",
@@ -186,6 +189,7 @@
         }
       ],
       "rules": [
+        "Team Size: Maximum of 3 members per team",
         "Operational model required",
         "Must address UN Sustainable Development Goals (SDG number clearly mentioned)",
         "Bring own laptops/adapters",
@@ -193,8 +197,8 @@
         "Safety guidelines must be followed"
       ],
       "date": "Feb 19, 2026",
-      "time": "12:00 - 1:30 PM",
-      "venue": "CB523",
+       "time": "12:00 - 1:30 PM",
+       "venue": "EEE Department",
       "contacts": [
         {
           "name": "Prarthana G",
@@ -226,16 +230,20 @@
           "description": "Navigate a board game with logic puzzles, traps, and power-ups (10 min max, dice-based movement)."
         }
       ],
-      "rules": [
-        "Teams of 2-3 members",
-        "No external assistance allowed",
-        "Time limits for each round",
-        "Strategic thinking is key",
-        "Judges' decisions are final"
-      ],
-      "date": "Feb 19, 2026",
-      "time": "TBA",
+       "rules": [
+         "Teams of 1 participant (solo event)",
+         "No external assistance allowed",
+         "Time limits for each round",
+         "Strategic thinking is key",
+         "Judges' decisions are final"
+       ],
+       "date": "Feb 19, 2026",
+       "time": "12:45 - 2:30 PM",
       "contacts": [
+        {
+          "name": "Harish",
+          "phone": "6374020440"
+        },
         {
           "name": "Rakshana",
           "phone": "8489177757"
@@ -243,13 +251,11 @@
         {
           "name": "Solaipriadharshan",
           "phone": "9345514391"
-        },
-        {
-          "name": "Mukund",
-          "phone": "9884103995"
         }
+        
       ],
-      "poster": "/images/battleship.jpg"
+       "poster": "/images/battleship.jpg",
+       "venue": "Block 4"
     }
   ]
 }
