@@ -26,6 +26,7 @@ export default function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/#about' },
     { name: 'Events', href: '/events' },
+    { name: 'Rulebook', href: "/Pulse'26 Rulebook.pdf" },
   ]
 
   return (
@@ -65,6 +66,8 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
+                    target={item.href.endsWith('.pdf') ? '_blank' : undefined}
+                    rel={item.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
                     className="relative px-5 py-2 text-sm font-medium text-gray-300 hover:text-electric-300 transition-colors duration-300 group font-orbitron tracking-wider"
                   >
                     <span className="relative z-10">{item.name}</span>
@@ -175,6 +178,8 @@ export default function Navbar() {
                       >
                         <Link
                           href={item.href}
+                          target={item.href.endsWith('.pdf') ? '_blank' : undefined}
+                          rel={item.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
                           onClick={() => setIsOpen(false)}
                           className="block py-3 px-4 rounded-lg text-gray-300 hover:text-electric-300 hover:bg-electric-500/10 transition-all duration-300 font-medium tracking-wide group font-orbitron"
                         >

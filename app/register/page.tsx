@@ -316,7 +316,7 @@ export default function RegisterPage() {
                         asChild
                         className="w-full bg-navy-800/50 hover:bg-navy-800 text-gray-300 hover:text-white border-2 border-electric-500/20 hover:border-electric-400/40 py-7 rounded-xl transition-all duration-300 font-medium tracking-wide font-orbitron text-base"
                       >
-                        <a href="/rulebook.pdf" download>
+                        <a href="/Pulse'26 Rulebook.pdf" download>
                           <span className="flex items-center justify-center gap-3">
                             <Download className="w-5 h-5" />
                             Download Rulebook
