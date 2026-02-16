@@ -1,23 +1,30 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from '@/components/Navbar'
-import { Inter, Orbitron } from 'next/font/google'
+import ScrollProgress from '@/components/ScrollProgress'
+import PageTransition from '@/components/PageTransition'
+import { Special_Elite, Bebas_Neue } from 'next/font/google'
 
-const bodyFont = Inter({
+const bodyFont = Special_Elite({
+  weight: '400',
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-outfit',
+  variable: '--font-special-elite',
 })
 
-const orbitron = Orbitron({
+const displayFont = Bebas_Neue({
+  weight: '400',
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-orbitron',
+  variable: '--font-bebas-neue',
 })
 
 export const metadata: Metadata = {
-  title: "PULSE'26 - National Level Technical Symposium",
-  description: 'A National Level Technical Symposium organized by the Department of Electrical and Electronics Engineering, SVCE',
+  title: "PULSE'26 - The Heist",
+  description: 'Join the Resistance. The biggest technical symposium by SVCE EEE.',
+  icons: {
+    icon: '/images/logo3.png',
+  },
 }
 
 export default function RootLayout({
@@ -27,21 +34,31 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${bodyFont.className} ${bodyFont.variable} ${orbitron.variable} font-sans bg-navy-950 text-white selection:bg-electric-500 selection:text-navy-950`}>
-        {/* Global animated background elements for all pages */}
-        <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-          {/* Floating orbs */}
-          <div className="bg-orb w-[420px] h-[420px] -top-40 -left-32" />
-          <div className="bg-orb w-[420px] h-[420px] bottom-[-260px] right-[-180px]" style={{ animationDelay: '6s' }} />
+      <body className={`${bodyFont.className} ${bodyFont.variable} ${displayFont.variable} font-sans bg-heist-black text-heist-white selection:bg-heist-red selection:text-white overflow-x-hidden`}>
+        {/* Money Heist Background */}
+        <div className="fixed inset-0 -z-10 bg-heist-black pointer-events-none">
+          {/* Blueprint Grid Pattern */}
+          <div className="absolute inset-0 bg-blueprint opacity-20" />
 
-          {/* Sweeping lines */}
-          <div className="bg-line top-1/4 left-[-40%]" />
-          <div className="bg-line bottom-1/4 left-[-60%]" style={{ animationDelay: '10s' }} />
+          {/* Noise Overlay */}
+          <div className="absolute inset-0 noise-overlay" />
+
+          {/* Scanlines */}
+          <div className="absolute inset-0 scanline opacity-[0.03]" />
+
+          {/* Vignette Overlay */}
+          <div className="absolute inset-0 bg-radial-gradient from-transparent to-black opacity-80" />
+
+          {/* Red Ambient Glow */}
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-heist-red/5 to-transparent pointer-events-none" />
         </div>
 
         <Navbar />
-        <main className="pt-24">
-          {children}
+        <ScrollProgress />
+        <main className="min-h-screen">
+          <PageTransition>
+            {children}
+          </PageTransition>
         </main>
       </body>
     </html>

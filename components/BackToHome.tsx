@@ -13,10 +13,10 @@ export default function BackToHome() {
     >
       <Link
         href="/"
-        className="inline-flex items-center space-x-2 text-electric-400 hover:text-electric-300 transition-colors group"
+        className="inline-flex items-center space-x-2 text-heist-silver hover:text-heist-red transition-colors group font-display tracking-widest uppercase text-xl"
       >
-        <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-        <span className="font-medium font-orbitron tracking-wide">Back to Home</span>
+        <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform text-heist-red" />
+        <span>Back to Base</span>
       </Link>
     </motion.div>
   )

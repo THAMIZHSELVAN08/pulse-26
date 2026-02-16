@@ -13,13 +13,11 @@ export default function BackToEvents() {
     >
       <Link
         href="/events"
-        className="inline-flex items-center space-x-2 text-electric-400 hover:text-electric-300 transition-colors group"
+        className="inline-flex items-center space-x-2 text-heist-silver hover:text-heist-red transition-colors group font-display tracking-widest uppercase text-xl"
       >
-        <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-        <span className="font-medium font-orbitron tracking-wide">Back to Events</span>
+        <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform text-heist-red" />
+        <span>Back to Operations</span>
       </Link>
     </motion.div>
   )
 }
-
-

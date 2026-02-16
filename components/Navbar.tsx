@@ -24,8 +24,9 @@ export default function Navbar() {
 
   const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '/#about' },
-    { name: 'Events', href: '/events' },
+    { name: 'Timeline', href: '/#timeline' },
+    { name: 'Missions', href: '/events' },
+    { name: 'Crew', href: '/crew' },
     { name: 'Rulebook', href: "/Pulse'26 Rulebook.pdf" },
   ]
 
@@ -37,26 +38,32 @@ export default function Navbar() {
           backdropFilter: navBlur,
           WebkitBackdropFilter: navBlur,
         }}
-        className={`fixed top-4 left-4 right-4 z-50 rounded-2xl transition-all duration-300 ${scrolled
-          ? 'glass py-2'
-          : 'bg-transparent py-4'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? 'bg-heist-black/80 border-b border-heist-red/30 py-2 shadow-[0_4px_30px_rgba(226,35,26,0.1)]'
+          : 'bg-transparent py-6'
           }`}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+        <div className="w-full px-6 md:px-12">
+          <div className="flex items-center justify-between h-20">
             {/* Logo - Left Corner */}
-            <Link href="/" className="flex items-center group">
-              <motion.img
-                src="/images/logo3.png"
-                alt="PULSE"
-                className="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_8px_rgba(45,212,191,0.5)]"
-                whileHover={{ rotate: [0, -5, 5, 0] }}
-                transition={{ duration: 0.5 }}
-              />
+            <Link href="/" className="flex items-center group relative">
+              <div className="absolute inset-0 bg-heist-red/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <motion.div className="relative">
+                <motion.img
+                  src="/images/logo3.png"
+                  alt="PULSE"
+                  className="h-16 w-16 object-contain transition-all duration-500 group-hover:scale-110 drop-shadow-[0_0_12px_rgba(226,35,26,0.5)]"
+                  whileHover={{ rotate: [0, -5, 5, 0] }}
+                />
+                {/* Micro Scanline on Logo */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-40 transition-opacity">
+                  <div className="absolute top-0 left-0 w-full h-[1px] bg-heist-red animate-[scan_2s_linear_infinite]" />
+                </div>
+              </motion.div>
             </Link>
 
             {/* Desktop Navigation - Right Corner */}
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-6">
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.name}
@@ -64,19 +71,24 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                 >
-                  <Link
-                    href={item.href}
-                    target={item.href.endsWith('.pdf') ? '_blank' : undefined}
-                    rel={item.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
-                    className="relative px-5 py-2 text-sm font-medium text-gray-300 hover:text-electric-300 transition-colors duration-300 group font-orbitron tracking-wider"
-                  >
-                    <span className="relative z-10">{item.name}</span>
-                    <motion.span
-                      className="absolute inset-0 bg-electric-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      layoutId="navbar-hover"
-                    />
-                    <span className="absolute bottom-1 left-5 right-5 h-0.5 bg-gradient-to-r from-electric-400 to-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                  </Link>
+                  {item.href.endsWith('.pdf') ? (
+                    <a
+                      href={item.href}
+                      download="Pulse26_Rulebook.pdf"
+                      className="relative text-lg font-display tracking-[0.3em] text-heist-silver hover:text-heist-red transition-colors duration-300 group uppercase"
+                    >
+                      <span className="relative z-10">{item.name}</span>
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-heist-red scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="relative text-lg font-display tracking-[0.3em] text-heist-silver hover:text-heist-red transition-colors duration-300 group uppercase"
+                    >
+                      <span className="relative z-10">{item.name}</span>
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-heist-red scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    </Link>
+                  )}
                 </motion.div>
               ))}
 
@@ -88,9 +100,9 @@ export default function Navbar() {
               >
                 <Button
                   asChild
-                  className="ml-1 bg-gradient-to-r from-electric-600 to-cyan-600 hover:from-electric-500 hover:to-cyan-500 text-white px-6 py-2 rounded-lg shadow-lg shadow-electric-500/20 hover:shadow-electric-500/40 transition-all duration-300 border-0 font-medium tracking-wide font-orbitron"
+                  className="ml-4 bg-heist-red hover:bg-heist-darkRed text-white px-8 py-2 rounded-none shadow-[4px_4px_0px_0px_rgba(179,0,0,0.4)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200 border border-heist-red font-display tracking-[0.3em] text-xl uppercase btn-heist-glitch"
                 >
-                  <Link href="/register">Register Now</Link>
+                  <Link href="/register">JOIN THE RESISTANCE</Link>
                 </Button>
               </motion.div>
             </div>
@@ -98,7 +110,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg text-gray-300 hover:text-electric-300 hover:bg-electric-500/10 transition-all duration-300"
+              className="md:hidden p-2 rounded-lg text-heist-silver hover:text-heist-red hover:bg-heist-red/10 transition-all duration-300"
               aria-label="Toggle menu"
               whileTap={{ scale: 0.95 }}
             >
@@ -111,7 +123,7 @@ export default function Navbar() {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className="w-6 h-6" />
+                    <X className="w-8 h-8" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -121,7 +133,7 @@ export default function Navbar() {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className="w-6 h-6" />
+                    <Menu className="w-8 h-8" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -141,7 +153,7 @@ export default function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-black/90 backdrop-blur-sm z-40 md:hidden"
             />
 
             {/* Mobile Menu Panel */}
@@ -150,59 +162,75 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed right-0 top-0 bottom-0 w-64 bg-navy-950/98 backdrop-blur-xl border-l border-electric-500/20 z-50 md:hidden shadow-2xl"
+              className="fixed right-0 top-0 bottom-0 w-72 bg-heist-black border-l-4 border-heist-red z-50 md:hidden shadow-2xl"
             >
-              <div className="flex flex-col h-full">
-                {/* Mobile Header */}
-                <div className="flex items-center justify-between p-4 border-b border-electric-500/20">
-                  <span className="text-lg font-medium tracking-wider bg-gradient-to-r from-electric-300 to-cyan-300 bg-clip-text text-transparent font-orbitron">
-                    Menu
-                  </span>
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="p-2 rounded-lg text-gray-300 hover:text-electric-300 hover:bg-electric-500/10 transition-all"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
+              <div className="flex flex-col h-full bg-blueprint bg-cover bg-center">
+                <div className="absolute inset-0 bg-heist-black/90 pointer-events-none" />
 
-                {/* Mobile Navigation Items */}
-                <div className="flex-1 overflow-y-auto p-4">
-                  <div className="space-y-2">
-                    {navItems.map((item, index) => (
-                      <motion.div
-                        key={item.name}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1, duration: 0.3 }}
-                      >
-                        <Link
-                          href={item.href}
-                          target={item.href.endsWith('.pdf') ? '_blank' : undefined}
-                          rel={item.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
-                          onClick={() => setIsOpen(false)}
-                          className="block py-3 px-4 rounded-lg text-gray-300 hover:text-electric-300 hover:bg-electric-500/10 transition-all duration-300 font-medium tracking-wide group font-orbitron"
-                        >
-                          <span className="flex items-center justify-between">
-                            {item.name}
-                            <span className="w-1.5 h-1.5 rounded-full bg-electric-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </span>
-                        </Link>
-                      </motion.div>
-                    ))}
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Mobile Header */}
+                  <div className="flex items-center justify-between p-6 border-b border-heist-red/30">
+                    <span className="text-2xl font-display tracking-widest text-heist-gold uppercase">
+                      PLAN ROOM
+                    </span>
+                    <button
+                      onClick={() => setIsOpen(false)}
+                      className="p-2 rounded-lg text-heist-silver hover:text-heist-red transition-all"
+                    >
+                      <X className="w-6 h-6" />
+                    </button>
                   </div>
-                </div>
 
-                {/* Mobile CTA */}
-                <div className="p-4 border-t border-electric-500/20">
-                  <Button
-                    asChild
-                    className="w-full bg-gradient-to-r from-electric-600 to-cyan-600 hover:from-electric-500 hover:to-cyan-500 text-white rounded-lg shadow-lg shadow-electric-500/20 border-0 font-medium tracking-wide font-orbitron"
-                  >
-                    <Link href="/register" onClick={() => setIsOpen(false)}>
-                      Register Now
-                    </Link>
-                  </Button>
+                  {/* Mobile Navigation Items */}
+                  <div className="flex-1 overflow-y-auto p-6">
+                    <div className="space-y-6">
+                      {navItems.map((item, index) => (
+                        <motion.div
+                          key={item.name}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1, duration: 0.3 }}
+                        >
+                          {item.href.endsWith('.pdf') ? (
+                            <a
+                              href={item.href}
+                              download="Pulse26_Rulebook.pdf"
+                              onClick={() => setIsOpen(false)}
+                              className="block text-xl text-heist-white hover:text-heist-red transition-all duration-300 font-display tracking-[0.3em] uppercase group"
+                            >
+                              <span className="flex items-center justify-between">
+                                {item.name}
+                                <span className="w-2 h-2 rounded-full bg-heist-red opacity-0 group-hover:opacity-100 transition-opacity" />
+                              </span>
+                            </a>
+                          ) : (
+                            <Link
+                              href={item.href}
+                              onClick={() => setIsOpen(false)}
+                              className="block text-xl text-heist-white hover:text-heist-red transition-all duration-300 font-display tracking-[0.3em] uppercase group"
+                            >
+                              <span className="flex items-center justify-between">
+                                {item.name}
+                                <span className="w-2 h-2 rounded-full bg-heist-red opacity-0 group-hover:opacity-100 transition-opacity" />
+                              </span>
+                            </Link>
+                          )}
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Mobile CTA */}
+                  <div className="p-6 border-t border-heist-red/30">
+                    <Button
+                      asChild
+                      className="w-full bg-heist-red hover:bg-heist-darkRed text-white rounded-none shadow-lg border border-heist-red font-display tracking-[0.3em] text-xl h-14 uppercase"
+                    >
+                      <Link href="/register" onClick={() => setIsOpen(false)}>
+                        JOIN THE RESISTANCE
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </motion.div>

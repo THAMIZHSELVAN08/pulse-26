@@ -50,41 +50,34 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        navy: {
-          900: '#0a0a1a',
-          950: '#050510',
-        },
-        electric: {
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0d9488',
-          700: '#0f766e',
-        },
-        neon: {
-          blue: '#5eead4', // electric-300
-          cyan: '#2dd4bf', // electric-400
-          purple: '#14b8a6', // electric-500
-        },
-        dark: {
-          bg: '#050510',
-          card: '#0a0a1a',
+        heist: {
+          red: '#E2231A',
+          darkRed: '#B30000',
+          black: '#0a0a0a',
+          charcoal: '#1a1a1a',
+          gold: '#FFD700',
+          silver: '#C0C0C0',
+          white: '#F5F5F5',
         },
       },
       fontFamily: {
-        // Inter (configured as --font-outfit in layout.tsx) is the primary, professional body font
-        sans: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
-        // Use the same professional base font for orbitron utility class, keeping styles consistent across the site
-        orbitron: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-special-elite)', 'monospace'], // Typewriter style for body
+        display: ['var(--font-bebas-neue)', 'sans-serif'], // Bold headlines
+        heist: ['var(--font-special-elite)', 'monospace'],
+      },
+      backgroundImage: {
+        'blueprint': 'linear-gradient(#1a1a1a 2px, transparent 2px), linear-gradient(90deg, #1a1a1a 2px, transparent 2px), linear-gradient(#1a1a1a 1px, transparent 1px), linear-gradient(90deg, #1a1a1a 1px, transparent 1px)',
+        'paper-texture': "linear-gradient(to bottom right, #1a1a1a, #0a0a0a)", // Dark texture for Heist theme
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(45, 212, 191, 0.5)',
-        'glow-lg': '0 0 40px rgba(45, 212, 191, 0.3)',
+        'red-glow': '0 0 20px rgba(226, 35, 26, 0.5)',
+        'gold-glow': '0 0 20px rgba(255, 215, 0, 0.5)',
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "glitch": "glitch 1s linear infinite",
       },
       keyframes: {
         "accordion-down": {
@@ -95,16 +88,11 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-      backgroundImage: {
-        'grid-pattern': 'linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px)',
-      },
-      backgroundSize: {
-        'grid': '50px 50px',
+        glitch: {
+          "2%, 64%": { transform: "translate(2px,0) skew(0deg)" },
+          "4%, 60%": { transform: "translate(-2px,0) skew(0deg)" },
+          "62%": { transform: "translate(0,0) skew(5deg)" },
+        },
       },
     },
   },
