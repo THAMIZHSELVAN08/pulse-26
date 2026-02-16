@@ -208,7 +208,7 @@ export default function RegisterPage() {
 
                     <div className="grid grid-cols-2 gap-6">
                       <Button asChild className="bg-heist-red hover:bg-heist-darkRed text-white rounded-none font-display tracking-[0.2em] uppercase py-8 h-auto shadow-[8px_8px_0_rgba(179,0,0,0.3)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
-                        <a href="https://forms.gle/9562vEghgWp1o9uX6" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-lg">
+                        <a href="https://forms.gle/EFhy2zUxvB3vLJBZ8" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-lg">
                           <ExternalLink className="w-5 h-5" />
                           Apply Now
                         </a>
