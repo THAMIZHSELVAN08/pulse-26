@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import ScrollProgress from '@/components/ScrollProgress'
 import PageTransition from '@/components/PageTransition'
 import { Special_Elite, Bebas_Neue } from 'next/font/google'
+import Script from 'next/script'
 
 const bodyFont = Special_Elite({
   weight: '400',
@@ -34,6 +35,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* Google Analytics */}
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-MX1CRLCLGD"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-MX1CRLCLGD');
+          `,
+        }}
+      />
       <body className={`${bodyFont.className} ${bodyFont.variable} ${displayFont.variable} font-sans bg-heist-black text-heist-white selection:bg-heist-red selection:text-white overflow-x-hidden`}>
         {/* Money Heist Background */}
         <div className="fixed inset-0 -z-10 bg-heist-black pointer-events-none">
