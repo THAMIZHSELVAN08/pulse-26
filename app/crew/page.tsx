@@ -24,8 +24,6 @@ const CREW_MEMBERS = [
     { name: "Prarthana", image: "/crew/Prarthana.jpg", role: "Reconnaissance Lead", reward: "$40M" },
     { name: "Akash Kumar", image: "/crew/AKASH.jpg", role: "Infrastructure Sabotage", reward: "$35M" },
     { name: "Visvajith", image: "/crew/Visvajith.jpg", role: "Hardware Intercept", reward: "$35M" },
-    { name: "Siddarth Naren", image: "/crew/Siddharth.jpeg", role: "Cipher Decryptor", reward: "$30M" },
-    { name: "Sarvesh Vaidhi", image: "/crew/Sarvesh Vaidhi.jpeg", role: "Network Defense Breach", reward: "$30M" },
     { name: "Shruthi", image: "/crew/SHRUTHI S_.jpg", role: "Signal Analysis", reward: "$25M" },
     { name: "Sri Ram", image: "/crew/Sriram.jpeg", role: "Rapid Response Operative", reward: "$25M" },
     { name: "Nazira", image: "/crew/Nazira.jpeg", role: "Digital Archive Access", reward: "$20M" },
